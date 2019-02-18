@@ -10,8 +10,8 @@ RUN apt-get update \
 # Clone the repo and build linux and windows versions
 RUN git clone https://github.com/Urho3D/Urho3D.git && \
     cd Urho3D && \
-    bash script/cmake_generic.sh build -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 && \
-    bash script/cmake_mingw.sh build-windows -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DMINGW_PREFIX=/usr/bin/x86_64-w64-mingw32 -DDIRECTX_LIB_SEARCH_PATHS=/usr/bin/x86-w64-mingw32/lib && \
+    bash script/cmake_generic.sh build -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=1 && \
+    bash script/cmake_mingw.sh build-windows -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=1 -DMINGW_PREFIX=/usr/bin/x86_64-w64-mingw32 -DDIRECTX_LIB_SEARCH_PATHS=/usr/bin/x86-w64-mingw32/lib && \
     cd build-windows && make -j $(nproc) && \
     cd .. && \
     cd build && make -j $(nproc) && \
