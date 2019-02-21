@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Arnis Lielturks <arnis@example.com>
 
 # Install all the dependencies
@@ -10,6 +10,7 @@ RUN apt-get update \
 # Clone the repo and build linux and windows versions
 RUN git clone https://github.com/ArnisLielturks/Urho3D.git && \
     cd Urho3D && \
+    g++ --version && \
     bash script/cmake_generic.sh build -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 && \
     bash script/cmake_mingw.sh build-windows -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 -DMINGW_PREFIX=/usr/bin/x86_64-w64-mingw32 -DDIRECTX_LIB_SEARCH_PATHS=/usr/bin/x86-w64-mingw32/lib && \
     cd build-windows && make -j $(nproc) && \
