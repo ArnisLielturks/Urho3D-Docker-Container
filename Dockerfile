@@ -11,8 +11,8 @@ RUN apt-get update \
 RUN git clone https://github.com/ArnisLielturks/Urho3D.git && \
     cd Urho3D && \
     g++ --version && \
-    bash script/cmake_generic.sh build -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 -DURHO3D_64BIT=1 -DURHO3D_TESTING=1 && \
-    bash script/cmake_mingw.sh build-windows -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 -DURHO3D_64BIT=1 -DURHO3D_TESTING=1 -DMINGW_PREFIX=/usr/bin/x86_64-w64-mingw32 -DDIRECTX_LIB_SEARCH_PATHS=/usr/bin/x86-w64-mingw32/lib && \
+    bash script/cmake_generic.sh build -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 -DURHO3D_64BIT=1 -DURHO3D_TESTING=1 -DURHO3D_DEPLOYMENT_TARGET=generic && \
+    bash script/cmake_mingw.sh build-windows -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 -DURHO3D_64BIT=1 -DURHO3D_TESTING=1 -DURHO3D_DEPLOYMENT_TARGET=generic  -DMINGW_PREFIX=/usr/bin/x86_64-w64-mingw32 -DDIRECTX_LIB_SEARCH_PATHS=/usr/bin/x86-w64-mingw32/lib && \
     cd build-windows && make -j $(nproc) && \
     cd .. && \
     cd build && make -j $(nproc) && \
