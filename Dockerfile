@@ -8,7 +8,7 @@ RUN apt-get update \
     && apt-get purge --auto-remove -y && apt-get clean
 
 # Clone the repo and build linux and windows versions
-RUN git clone https://github.com/Urho3D/Urho3D.git && \
+RUN git clone https://github.com/ArnisLielturks/Urho3D.git && \
     cd Urho3D && \
     bash script/cmake_generic.sh build -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 && \
     bash script/cmake_mingw.sh build-windows -DURHO3D_SAMPLES=0 -DURHO3D_TOOLS=0 -DURHO3D_HASH_DEBUG=0 -DURHO3D_PROFILING=0 -DMINGW_PREFIX=/usr/bin/x86_64-w64-mingw32 -DDIRECTX_LIB_SEARCH_PATHS=/usr/bin/x86-w64-mingw32/lib && \
