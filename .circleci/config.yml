@@ -9,7 +9,7 @@ jobs:
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
      # Build Android 
-     - run: ./script/dockerized.sh android ./gradlew --stacktrace -P URHO3D_LIB_TYPE=SHARED -P URHO3D_TOOLS=0 -P ANDROID_ABI=armeabi-v7a build
+     #- run: ./script/dockerized.sh android ./gradlew --stacktrace -P URHO3D_LIB_TYPE=SHARED -P URHO3D_TOOLS=0 -P ANDROID_ABI=armeabi-v7a build
 
      # build the application image
      - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM .
