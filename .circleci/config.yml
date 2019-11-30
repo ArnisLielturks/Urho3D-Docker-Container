@@ -5,28 +5,28 @@ jobs:
    steps:
      - checkout
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM -f Dockerfile-Linux .
+     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-linux -f Dockerfile-Linux .
      - run: docker push arnislielturks/urho3d:$CIRCLE_BUILD_NUM-linux
  build_windows:
    machine: true
    steps:
      - checkout
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM -f Dockerfile-Windows .
+     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-windows -f Dockerfile-Windows .
      - run: docker push arnislielturks/urho3d:$CIRCLE_BUILD_NUM-windows
  build_linux_no_scripting:
    machine: true
    steps:
      - checkout
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-no-scripts -f Dockerfile-Linux-no-scripting .
+     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-linux-no-scripts -f Dockerfile-Linux-no-scripting .
      - run: docker push arnislielturks/urho3d:$CIRCLE_BUILD_NUM-linux-no-scripts
  build_windows_no_scripting:
    machine: true
    steps:
      - checkout
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-no-scripts -f Dockerfile-Windows-no-scripting .
+     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-windows-no-scripts -f Dockerfile-Windows-no-scripting .
      - run: docker push arnislielturks/urho3d:$CIRCLE_BUILD_NUM-windows-no-scripts
 workflows:
   version: 2
