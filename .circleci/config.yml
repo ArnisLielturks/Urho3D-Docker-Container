@@ -1,18 +1,22 @@
 version: 2
 jobs:
- build:
+ build_complete:
    machine: true
    steps:
      - checkout
-     # start proprietary DB using private Docker image
-     # with credentials stored in the UI
      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-
-     # Build Android 
-     #- run: ./script/dockerized.sh android ./gradlew --stacktrace -P URHO3D_LIB_TYPE=SHARED -P URHO3D_TOOLS=0 -P ANDROID_ABI=armeabi-v7a build
-
-     # build the application image
      - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM .
-
-     # deploy the image
      - run: docker push arnislielturks/urho3d:$CIRCLE_BUILD_NUM
+ build_no_scripts:
+   machine: true
+   steps:
+     - checkout
+     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+     - run: docker build -t arnislielturks/urho3d:$CIRCLE_BUILD_NUM-no-scripts -f Dockerfile-no-scripting .
+     - run: docker push arnislielturks/urho3d:$CIRCLE_BUILD_NUM-no-scripts
+workflows:
+  version: 2
+  build:
+    jobs:
+    - build_complete
+    - build_no_scripts
