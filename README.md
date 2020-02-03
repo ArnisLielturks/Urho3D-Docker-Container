@@ -13,25 +13,3 @@ Run the following command
 docker build .
 ```
 ---
-
-## Tagging docker imgage
-
-```
-docker tag $IMAGE_ID $DOCKER_USER/$DOCKER_REPOSITORY_NAME:$TAG
-```
-
-Example:
-```
-docker tag 1b87536d3110 arnislielturks/urho3d:888
-```
-
----
-## Pushing to docker hub
-```
-docker push $DOCKER_USER/$DOCKER_REPOSITORY_NAME:$TAG
-```
-
-Example:
-```
-docker push arnislielturks/urho3d:888
-```
