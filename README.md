@@ -10,6 +10,7 @@ Here's my public docker repository which was built this way: https://hub.docker.
 ## Build process
 Run the following command
 ```
-docker build .
+docker build -f Dockerfile-Linux
+docker build -f Dockerfile-Windows
 ```
 ---

@@ -3,7 +3,6 @@ MAINTAINER Arnis Lielturks <arnis@example.com>
 
 # Install all the dependencies
 RUN apt-get update \
-    && apt-get upgrade -y \
     && apt-get install -y libgl1-mesa-dev git cmake g++ libpulse-dev libx11-dev libssl-dev curl unzip \
     && apt-get purge --auto-remove -y && apt-get clean
 
